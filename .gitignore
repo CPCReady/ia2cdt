@@ -1,6 +1,6 @@
 dist/
 obj/
-bin/2cdt
-bin/2cdt.exe
+bin/ia2cdt
+bin/ia2cdt.exe
 *.o
 .DS_Store

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # =============================================================================
-# build.sh - Cross-platform build script for 2CDT
+# build.sh - Cross-platform build script for ia2CDT
 # Targets: Windows x86/x64, Linux x86/x64/arm64, macOS x64/arm64
 # Requires: Docker
 # =============================================================================
@@ -95,7 +95,6 @@ build() {
     local label="$1"
     local out_file="$2"
     shift 2
-    # remaining args are the full compiler invocation
 
     printf "  %-40s " "${label}..."
     mkdir -p "$(dirname "${OUT}/${out_file}")"
@@ -112,29 +111,29 @@ build() {
 
 echo ""
 echo "=== Linux ==="
-build "linux/x86_64" "linux/x86_64/2cdt" \
+build "linux/x86_64" "linux/x86_64/ia2cdt" \
     zig cc -target x86_64-linux-gnu  -DUNIX
 
-build "linux/x86" "linux/x86/2cdt" \
+build "linux/x86" "linux/x86/ia2cdt" \
     zig cc -target x86-linux-gnu     -DUNIX
 
-build "linux/arm64" "linux/arm64/2cdt" \
+build "linux/arm64" "linux/arm64/ia2cdt" \
     zig cc -target aarch64-linux-gnu -DUNIX
 
 echo ""
 echo "=== Windows ==="
-build "windows/x86_64" "windows/x86_64/2cdt.exe" \
+build "windows/x86_64" "windows/x86_64/ia2cdt.exe" \
     x86_64-w64-mingw32-gcc -DWIN32
 
-build "windows/x86" "windows/x86/2cdt.exe" \
+build "windows/x86" "windows/x86/ia2cdt.exe" \
     i686-w64-mingw32-gcc   -DWIN32
 
 echo ""
 echo "=== macOS ==="
-build "macos/x86_64" "macos/x86_64/2cdt" \
+build "macos/x86_64" "macos/x86_64/ia2cdt" \
     zig cc -target x86_64-macos-none -DUNIX
 
-build "macos/arm64" "macos/arm64/2cdt" \
+build "macos/arm64" "macos/arm64/ia2cdt" \
     zig cc -target aarch64-macos-none -DUNIX
 
 echo ""
@@ -158,7 +157,7 @@ BUILDEOF
 # Main
 # =============================================================================
 
-IMAGE_NAME="2cdt-builder"
+IMAGE_NAME="ia2cdt-builder"
 
 log "Building Docker image '${IMAGE_NAME}' (first time may take a few minutes)..."
 echo "${DOCKERFILE}" | docker build -t "${IMAGE_NAME}" - ||

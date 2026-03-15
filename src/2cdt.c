@@ -739,12 +739,12 @@ void	CPC_WriteDataBlock(TZX_FILE *pFile, unsigned char SyncByte, unsigned char *
 	}
 }
 
-#define UTILITY_NAME "2CDT"
+#define UTILITY_NAME "ia2CDT"
 
 void	DisplayInfo()
 {
 		printf("%s will transfer files into a .CDT/.TZX tape image, in Amstrad CPC/CPC+\r\n", UTILITY_NAME);
-		printf("KC Compact form.\r\n\r\n");
+		printf("Compact form.\r\n\r\n");
 		printf("Usage: %s [arguments] <input filename> <.cdt image>\r\n\r\n", UTILITY_NAME);
 		printf("-n              - Blank CDT file before use\n");
         printf("-b <number>	    - Specify Baud rate (default 2000)\n");
@@ -845,30 +845,9 @@ int		main(int argc, char *argv[])
 		LoadAddressOverride = FALSE;
 		TZXWriteMethod = TZX_TURBO_LOADING_DATA_BLOCK;
         BlankBeforeUse = FALSE;
-        ExecutionAddress = LoadAddress = 0x01000;
+		ExecutionAddress = LoadAddress = 0x01000;
 		ExecutionAddressOverride = FALSE;
 		LoadAddressOverride = FALSE;
-
-		printf("-n              - Blank CDT file before use\n");
-        printf("-b <number>	    - Specify Baud rate (default 2000)\n");
-		printf("-s <0 or 1>     - Specify 'Speed Write'.\n");
-		printf("                  0 = 1000 baud, 1 = 2000 baud (default)\n");
-		printf("-t <method>     - TZX Block Write Method.\n");
-		printf("                  0 = Pure Data, 1 = Turbo Loading (default)\n");
-		printf("-m <method>     - Data method\n");
-        printf("                  0 = blocks (default)\n");
-        printf("                  1 = headerless (Firmware function: CAS READ - &BCA1) \n");
-        printf("                  2 = spectrum \n");
-        printf("                  3 = Two blocks. First block of 2K, second block has remainder\n");
-        printf("                  4 = Two blocks. First block of 1 byte, second block has remainder\n");
-		printf("-X <number> 	= Define or override execution address (default is &1000 if no header)\r\n");
-		printf("-L <number> 	= Define or override load address (default is &1000 if no header)\r\n");
- 		printf("-F <number> 	= Define or override file type (0=BASIC, 2=Binary (default if no header)) etc. Applies to Data method 0\r\n");
- 		printf("-p <number> 	= Set initial pause in milliseconds (default 3000ms)\r\n");
- 		printf("-P 				= Add a 1ms pause for buggy emulators that ignore first block\r\n");
-		printf("-r <tape filename>\n");
-        printf("                - Add <input filename> as <tape filename> to CDT (rename file)\n");
-
 
         do
         {

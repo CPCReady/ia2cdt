@@ -1,4 +1,4 @@
-# Makefile for 2cdt utility
+# Makefile for ia2CDT utility
 
 .PHONY: clean cleanall all
 CC   = gcc
@@ -16,7 +16,7 @@ CFLAGS  = -O3 -fsigned-char -DUNIX
 LFLAGS1 =
 LFLAGS2 = -s 
 
-TARGET = $(BIN)/2cdt
+TARGET = $(BIN)/ia2cdt
 FILES  = 2cdt tzxfile getopt
 F_OBJ  = $(foreach F, $(FILES), $(OBJ)/$(F).o)
 
