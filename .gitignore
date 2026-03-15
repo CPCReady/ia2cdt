@@ -1,0 +1,6 @@
+dist/
+obj/
+bin/2cdt
+bin/2cdt.exe
+*.o
+.DS_Store
